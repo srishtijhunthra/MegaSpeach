@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SONG PLAYER</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<style>
+	.heading{
+		font-weight: 100;
+		font-size: 4em;
+		text-shadow: 1px 1px 5px black;
+	}
+	img{
+		height: 90%;
+		width: 100%;
+	}
+	.text{
+		font-size: 32px;
+		font-style: italic;
+	}
+</style>
+
+
+</head>
+<body>
+	
+	<div class='container'>
+		<div class = 'jumbotron'>
+			<div class = 'container'>
+				<h1 class='heading'>MegaSpeach</h1>
+				<br>
+				<p>Music is an art form, and a cultural activity, whose medium is sound. Music's connection is not only limited to emotions, but also to the human mind and body. Therefore, presenting a platform to get the list of songs based on the emotion predicted by MegaSpeach can help people have better control over mind as well as their body.</p>
+			</div>
+		</div>
+		{%if not tables%}
+		<form class='form-inline' method = "POST" action ="/" enctype="multipart/form-data">
+			<label><b>NAME : &nbsp;&nbsp;</b></label>
+			<input class = 'form-control' type="text"name="name" placeholder="Your name">
+			<button onclick= "displayfunc()" type='submit' class='btn btn-primary'>SUBMIT</button>>
+			
+		</form>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<h1><center><div id="mydiv"></div></center></h1>
+		<script>
+			function displayfunc(){
+				document.getElementById("mydiv").innerHTML = "RECORDING AUDIO";
+			}
+		</script>
+
+		<br>
+		<br>
+
+	{%endif%}
+		{% for table in tables %}
+		
+			<h1><center>Music list</center></h1>
+
+            
+            {{ table|safe }}
+	{% endfor %}
+	</div>
+</body>
+</html>
